@@ -28,7 +28,7 @@ class NearbyStoresWidget extends StatelessWidget {
 
     // scale factors for responsiveness
     double textScale = screenWidth / 375; // 375px = base design width
-    double imageSize = screenWidth * 0.15; // 15% of screen width
+    double imageSize = screenWidth * 0.18; // 15% of screen width
 
     return Container(
       height: 130,
@@ -54,6 +54,7 @@ class NearbyStoresWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
+
               SizedBox(width: screenWidth * 0.03),
 
               // Text details
@@ -61,13 +62,7 @@ class NearbyStoresWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14 * textScale,
-                      ),
-                    ),
+                    SemiBold(text: title, fontsize: 14 * textScale),
                     Text(subtitle, style: TextStyle(fontSize: 12 * textScale)),
                     Text(siteno, style: TextStyle(fontSize: 12 * textScale)),
                     SizedBox(height: screenHeight * 0.005),
@@ -122,26 +117,42 @@ class NearbyStoresWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 6), // optional spacing
-                Container(height: 1, color: Appcolors.divdercolor),
-                SizedBox(height: 6), // optional spacing
+                SizedBox(height: screenHeight * 0.0080), // 6 / 812 ≈ 0.0074
+
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    width: screenWidth * 0.70,
+                    height: 1,
+                    color: Appcolors.divdercolor,
+                  ),
+                ),
+                SizedBox(height: screenHeight * 0.0074), // 6 / 812 ≈ 0.0074
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
+                        SizedBox(
+                          width: screenWidth * 0.200,
+                        ), // 70 / 375 ≈ 0.187
                         Image.asset(
                           Appimages.percenticon,
                           width: 16 * textScale,
                           height: 16 * textScale,
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(
+                          width: screenWidth * 0.0133,
+                        ), // 5 / 375 ≈ 0.0133
                         SemiBold(
                           text: "Upto 10% OFF",
-                          fontsize: 12 * textScale,
+                          fontsize: 10 * textScale,
                         ),
                       ],
                     ),
+                    SizedBox(width: screenWidth * 0.080), // 10 / 375 ≈ 0.027
+
                     Flexible(
                       child: Row(
                         children: [
@@ -150,10 +161,13 @@ class NearbyStoresWidget extends StatelessWidget {
                             width: 16 * textScale,
                             height: 16 * textScale,
                           ),
-                          SizedBox(width: 4),
+                          SizedBox(
+                            width: screenWidth * 0.0107,
+                          ), // 4 / 375 ≈ 0.0107
+
                           SemiBold(
                             text: "3400+ items available",
-                            fontsize: 12 * textScale,
+                            fontsize: 10 * textScale,
                           ),
                         ],
                       ),

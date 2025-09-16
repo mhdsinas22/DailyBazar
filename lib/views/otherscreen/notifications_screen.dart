@@ -3,6 +3,7 @@ import 'package:bording_week1/bloc/notification/notification_event.dart';
 import 'package:bording_week1/bloc/notification/notification_state.dart';
 import 'package:bording_week1/common/const/appcolors.dart';
 import 'package:bording_week1/common/const/styles/texts/medium_font.dart';
+import 'package:bording_week1/common/utils/dateformatter.dart';
 import 'package:bording_week1/data/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -116,6 +117,13 @@ class NotificationsScreen extends StatelessWidget {
                                         style: const TextStyle(fontSize: 14),
                                       ),
                                       const SizedBox(height: 6),
+
+                                      Text(
+                                        DateFormatter.format(
+                                          DateTime.parse(item.timestamp),
+                                        ).toString(),
+                                        style: const TextStyle(fontSize: 14),
+                                      ),
                                     ],
                                   ),
                                 ),

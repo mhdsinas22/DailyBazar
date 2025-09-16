@@ -18,6 +18,7 @@ class SemiBold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      maxLines: 1,
       text,
       style: TextStyle(
         fontSize: fontsize,

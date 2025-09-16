@@ -1,10 +1,12 @@
 import 'package:bording_week1/common/const/appcolors.dart';
 import 'package:bording_week1/common/const/appimages.dart';
+import 'package:bording_week1/common/const/constfunctions/text_formfiled_function.dart';
 import 'package:bording_week1/common/const/styles/buttons/button_circular_rounded.dart';
 import 'package:bording_week1/common/const/styles/texts/bold_text.dart';
 import 'package:bording_week1/common/const/styles/texts/custom_font.dart';
 import 'package:bording_week1/common/const/styles/texts/medium_font.dart';
 import 'package:bording_week1/common/const/styles/texts/semibold.dart';
+import 'package:bording_week1/common/widgets/home_screen_appbar.dart';
 import 'package:bording_week1/common/widgets/nearby_stores_widget.dart';
 import 'package:bording_week1/common/widgets/referandearn_conantier.dart';
 import 'package:bording_week1/common/widgets/service_categories.dart';
@@ -23,20 +25,7 @@ class HomeScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Icon(Icons.location_on, color: Appcolors.appgreen, size: 26),
-            SizedBox(width: 5),
-            SemiBold(
-              text: "ABCD, New Delhi",
-              fontsize: screenWidth < 350 ? 14 : 16,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Icon(Icons.keyboard_arrow_down, color: Appcolors.appgreen),
-          ],
-        ),
-      ),
+      appBar: HomeScreenappabr(screenWidth: screenWidth),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * 0.03,
@@ -65,47 +54,49 @@ class HomeScreen extends StatelessWidget {
                           vertical: screenHeight * 0.015,
                           horizontal: screenWidth * 0.03,
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
+                        enabledBorder: Textformfiledfunction.enableborder(),
+                        focusedBorder: Textformfiledfunction.focusedBorder(),
                       ),
                     ),
                   ),
                   SizedBox(width: 8),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Appnavigotor.push(context, NotificationsScreen());
-                        },
-                        icon: Icon(
-                          Icons.notifications_outlined,
-                          size: 30,
-                          color: Appcolors.notfcaitonred,
-                        ),
-                      ),
-                      Positioned(
-                        right: 8,
-                        top: 8,
-                        child: Container(
-                          width: 16,
-                          height: 16,
-                          decoration: BoxDecoration(
+                  InkWell(
+                    onTap:
+                        () => Appnavigotor.push(context, NotificationsScreen()),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Appnavigotor.push(context, NotificationsScreen());
+                          },
+                          icon: Icon(
+                            Icons.notifications_outlined,
+                            size: 30,
                             color: Appcolors.notfcaitonred,
-                            shape: BoxShape.circle,
                           ),
-                          child: Center(
-                            child: BoldText(
-                              text: "2",
-                              fontsize: 10,
-                              color: Colors.white,
+                        ),
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            width: 16,
+                            height: 16,
+                            decoration: BoxDecoration(
+                              color: Appcolors.notfcaitonred,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: BoldText(
+                                text: "2",
+                                fontsize: 10,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   IconButton(
                     onPressed: () {},
@@ -119,8 +110,9 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: screenHeight * 0.02),
               SemiBold(
+                overflow: TextOverflow.ellipsis,
                 text: "What would you like to do today?",
-                fontsize: screenWidth < 350 ? 18 : 22,
+                fontsize: screenWidth < 350 ? 18 : 18,
               ),
               SizedBox(height: screenHeight * 0.015),
               // 🔥 Home Categories Grid
@@ -212,7 +204,7 @@ class HomeScreen extends StatelessWidget {
                   },
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: screenWidth < 350 ? 0.5 : 0.46,
+                    childAspectRatio: screenWidth < 350 ? 0.5 : 0.44,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                   ),
