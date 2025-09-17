@@ -87,17 +87,8 @@ class NotificationsScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // Icon / Image
-                                CircleAvatar(
-                                  radius: 24,
-                                  backgroundImage: NetworkImage(
-                                    "https://raw.githubusercontent.com/sayanp23/test-api/main/images/${item.image}",
-                                  ),
-                                  onBackgroundImageError: (_, __) {
-                                    print("Image load failed");
-                                  },
-                                ),
+                                Image.asset("assets/${item.image}"),
                                 const SizedBox(width: 12),
-
                                 // Title + Body + Time
                                 Expanded(
                                   child: Column(

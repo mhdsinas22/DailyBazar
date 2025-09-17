@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: HomeScreenappabr(screenWidth: screenWidth),
+      appBar: HomeScreenappabr(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * 0.03,

@@ -12,8 +12,8 @@ class Referandearncontanier extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: screenWidth * 0.9,
-          height: screenHeight * 0.10,
+          // width: screenWidth * 0.9,
+          height: screenHeight * 0.11,
           decoration: BoxDecoration(
             color: Appcolors.appgreen,
             borderRadius: BorderRadius.circular(10),
@@ -46,6 +46,7 @@ class Referandearncontanier extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.013),
                   Icon(Icons.arrow_circle_right, color: Appcolors.white),
                 ],
               ),
@@ -53,7 +54,7 @@ class Referandearncontanier extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: screenWidth * 0.07, // instead of fixed 60 px
+          right: screenWidth * 0.05, // instead of fixed 60 px
           top: screenHeight * 0.01,
           child: Image.asset(
             width: screenWidth * 0.174,
