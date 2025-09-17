@@ -1,6 +1,7 @@
 import 'package:bording_week1/common/const/appcolors.dart';
-import 'package:bording_week1/common/const/appimages.dart';
 import 'package:bording_week1/common/const/styles/texts/semibold.dart';
+import 'package:bording_week1/common/widgets/Offer_badge_widget.dart';
+import 'package:bording_week1/common/widgets/item_Inforow_widget.dart';
 import 'package:flutter/material.dart';
 
 class NearbyStoresWidget extends StatelessWidget {
@@ -31,7 +32,7 @@ class NearbyStoresWidget extends StatelessWidget {
     double imageSize = screenWidth * 0.18; // 15% of screen width
 
     return Container(
-      height: 130,
+      height: MediaQuery.of(context).size.height * 0.15,
       padding: EdgeInsets.all(screenWidth * 0.02),
       margin: EdgeInsets.symmetric(vertical: screenHeight * 0.005),
       width: double.infinity,
@@ -108,7 +109,6 @@ class NearbyStoresWidget extends StatelessWidget {
               ),
             ],
           ),
-
           Positioned(
             bottom: 0,
             left: 0,
@@ -118,7 +118,6 @@ class NearbyStoresWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SizedBox(height: screenHeight * 0.0080), // 6 / 812 ≈ 0.0074
-
                 Align(
                   alignment: Alignment.centerRight,
                   child: Container(
@@ -128,48 +127,16 @@ class NearbyStoresWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.0074), // 6 / 812 ≈ 0.0074
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: screenWidth * 0.200,
-                        ), // 70 / 375 ≈ 0.187
-                        Image.asset(
-                          Appimages.percenticon,
-                          width: 16 * textScale,
-                          height: 16 * textScale,
-                        ),
-                        SizedBox(
-                          width: screenWidth * 0.0133,
-                        ), // 5 / 375 ≈ 0.0133
-                        SemiBold(
-                          text: "Upto 10% OFF",
-                          fontsize: 10 * textScale,
-                        ),
-                      ],
-                    ),
+                    OfferBadge(screenWidth: screenWidth, textScale: textScale),
                     SizedBox(width: screenWidth * 0.080), // 10 / 375 ≈ 0.027
-
                     Flexible(
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            Appimages.groecy,
-                            width: 16 * textScale,
-                            height: 16 * textScale,
-                          ),
-                          SizedBox(
-                            width: screenWidth * 0.0107,
-                          ), // 4 / 375 ≈ 0.0107
-
-                          SemiBold(
-                            text: "3400+ items available",
-                            fontsize: 10 * textScale,
-                          ),
-                        ],
+                      child: ItemInfoRow(
+                        text: "3400+ items available",
+                        textScale: textScale,
+                        screenWidth: screenWidth,
                       ),
                     ),
                   ],

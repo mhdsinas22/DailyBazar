@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: HomeScreenappabr(screenWidth: screenWidth),
+      appBar: HomeScreenappabr(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * 0.03,
@@ -216,7 +216,15 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
               ),
               SizedBox(height: screenHeight * 0.01),
-              Image.asset("assets/Group 111.png"),
+              GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) {
+                  return Image.asset("assets/Group 111.png");
+                },
+              ),
               SizedBox(height: screenHeight * 0.015),
               Referandearncontanier(),
               SizedBox(height: screenHeight * 0.02),
