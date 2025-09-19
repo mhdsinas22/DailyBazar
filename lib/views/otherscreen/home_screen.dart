@@ -2,12 +2,14 @@ import 'package:bording_week1/common/const/appcolors.dart';
 import 'package:bording_week1/common/const/appimages.dart';
 import 'package:bording_week1/common/const/constfunctions/text_formfiled_function.dart';
 import 'package:bording_week1/common/const/styles/buttons/button_circular_rounded.dart';
-import 'package:bording_week1/common/const/styles/texts/bold_text.dart';
 import 'package:bording_week1/common/const/styles/texts/custom_font.dart';
 import 'package:bording_week1/common/const/styles/texts/medium_font.dart';
 import 'package:bording_week1/common/const/styles/texts/semibold.dart';
+import 'package:bording_week1/common/girds/service_gird.dart';
+import 'package:bording_week1/common/girds/trending_gird.dart';
 import 'package:bording_week1/common/widgets/home_screen_appbar.dart';
 import 'package:bording_week1/common/widgets/nearby_stores_widget.dart';
+import 'package:bording_week1/common/widgets/notifcation_count_contianer.dart';
 import 'package:bording_week1/common/widgets/referandearn_conantier.dart';
 import 'package:bording_week1/common/widgets/service_categories.dart';
 import 'package:bording_week1/common/widgets/trending_catgoery.dart';
@@ -78,21 +80,7 @@ class HomeScreen extends StatelessWidget {
                         Positioned(
                           right: 8,
                           top: 8,
-                          child: Container(
-                            width: 16,
-                            height: 16,
-                            decoration: BoxDecoration(
-                              color: Appcolors.notfcaitonred,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: BoldText(
-                                text: "2",
-                                fontsize: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                          child: NotifcationCountContianer(count: "2"),
                         ),
                       ],
                     ),
@@ -115,26 +103,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: screenHeight * 0.015),
               // 🔥 Home Categories Grid
-              GridView.builder(
-                primary: false,
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: DummyData.homeGirditems.length,
-                itemBuilder: (context, index) {
-                  final items = DummyData.homeGirditems[index];
-                  return ServiceCategories(
-                    title: items.title,
-                    image: items.image,
-                    isoffer: items.isoffer,
-                  );
-                },
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: screenWidth / (screenWidth < 350 ? 3 : 4),
-                  mainAxisSpacing: 18,
-                  crossAxisSpacing: 1,
-                  childAspectRatio: 1,
-                ),
-              ),
+              ServiceGrid(screenWidth: screenWidth),
               SizedBox(height: screenHeight * 0.015),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -186,28 +155,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: screenHeight * 0.015),
               SizedBox(
                 height: screenHeight * 0.28,
-                child: GridView.builder(
-                  primary: false,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: DummyData.trendinggirditems.length,
-                  itemBuilder: (context, index) {
-                    final items = DummyData.trendinggirditems[index];
-                    return TrendingCatgoery(
-                      image: items.image,
-                      title: items.title,
-                      subtitle: items.subtile,
-                      storelocation: items.storelocation,
-                      ratingandtime: items.ratingandtime,
-                    );
-                  },
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: screenWidth < 350 ? 0.5 : 0.44,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                  ),
-                ),
+                child: TrendingGird(screenWidth: screenWidth),
               ),
               SizedBox(height: screenHeight * 0.02),
               Text(

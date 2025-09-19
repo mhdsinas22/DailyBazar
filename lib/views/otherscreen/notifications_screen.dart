@@ -77,10 +77,6 @@ class NotificationsScreen extends StatelessWidget {
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           final item = state.notifications[index];
-                          // String baseUrl =
-                          //     "https://raw.githubusercontent.com/sayanp23/test-api/main/test-notifications.json/images/";
-                          // String imageName = item.image; // API-l ninn vannu
-                          // String fullImageUrl = "$baseUrl$imageName";
                           return Padding(
                             padding: const EdgeInsets.all(12),
                             child: Row(
