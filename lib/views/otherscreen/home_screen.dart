@@ -13,7 +13,6 @@ import 'package:bording_week1/common/widgets/service_categories.dart';
 import 'package:bording_week1/common/widgets/trending_catgoery.dart';
 import 'package:bording_week1/dummy/dummy_data.dart';
 import 'package:bording_week1/common/utils/navgtor.dart';
-import 'package:bording_week1/views/otherscreen/notifications_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -62,13 +61,13 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(width: 8),
                   InkWell(
                     onTap:
-                        () => Appnavigotor.push(context, NotificationsScreen()),
+                        () => Appnavigotor.pushnamed(context, "/notifications"),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         IconButton(
                           onPressed: () {
-                            Appnavigotor.push(context, NotificationsScreen());
+                            Appnavigotor.pushnamed(context, "/notifications");
                           },
                           icon: Icon(
                             Icons.notifications_outlined,

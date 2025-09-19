@@ -11,4 +11,8 @@ class Appnavigotor {
       ),
     );
   }
+
+  static pushnamed(BuildContext context, String named) {
+    Navigator.pushNamed(context, named);
+  }
 }

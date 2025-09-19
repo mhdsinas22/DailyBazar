@@ -1,4 +1,4 @@
-package com.example.bording_week1
+package com.sinas.bording_week1
 
 import io.flutter.embedding.android.FlutterActivity
 
