@@ -11,8 +11,6 @@ import 'package:bording_week1/common/widgets/home_screen_appbar.dart';
 import 'package:bording_week1/common/widgets/nearby_stores_widget.dart';
 import 'package:bording_week1/common/widgets/notifcation_count_contianer.dart';
 import 'package:bording_week1/common/widgets/referandearn_conantier.dart';
-import 'package:bording_week1/common/widgets/service_categories.dart';
-import 'package:bording_week1/common/widgets/trending_catgoery.dart';
 import 'package:bording_week1/dummy/dummy_data.dart';
 import 'package:bording_week1/common/utils/navgtor.dart';
 import 'package:flutter/material.dart';
@@ -133,7 +131,6 @@ class HomeScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-
               SizedBox(height: screenHeight * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

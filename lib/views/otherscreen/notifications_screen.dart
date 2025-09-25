@@ -104,7 +104,6 @@ class NotificationsScreen extends StatelessWidget {
                                         style: const TextStyle(fontSize: 14),
                                       ),
                                       const SizedBox(height: 6),
-
                                       Text(
                                         DateFormatter.format(
                                           DateTime.parse(item.timestamp),
@@ -121,7 +120,6 @@ class NotificationsScreen extends StatelessWidget {
                       ),
                     );
                   } else if (state is NotificationError) {
-                    print("HER IS ERROR:-${state.message}");
                     return Expanded(
                       child: Center(child: Text("Error: ${state.message}")),
                     );
