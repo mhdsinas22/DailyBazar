@@ -10,26 +10,35 @@ import 'package:bording_week1/views/otherscreen/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// MainScreen is the root screen of the app with Bottom Navigation
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
+
+  // List of pages for BottomNavigationBar
   final List<Widget> pages = [
     HomeScreen(),
     CartScreen(),
     OrderScreen(),
     AccountScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+      // Provide BottomNavBloc to manage BottomNavigation state
       create: (context) => BottomNavBloc(),
       child: BlocBuilder<BottomNavBloc, BottomNavState>(
         builder: (context, state) {
           return Scaffold(
+            // Display the selected page based on the current state
             body: pages[state.selectedindex],
+
+            // Bottom Navigation Bar
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
+                  // Subtle shadow above the BottomNavigationBar
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 4,
@@ -38,15 +47,17 @@ class MainScreen extends StatelessWidget {
                 ],
               ),
               child: BottomNavigationBar(
-                currentIndex: state.selectedindex,
-                onTap: (value) {
-                  context.read<BottomNavBloc>().add(ChangeTabEvent(value));
+                currentIndex: state.selectedindex, // Highlight current tab
+                onTap: (index) {
+                  // Dispatch event to change tab
+                  context.read<BottomNavBloc>().add(ChangeTabEvent(index));
                 },
-                type: BottomNavigationBarType.fixed,
+                type: BottomNavigationBarType.fixed, // Fixed tabs
                 backgroundColor: Appcolors.white,
                 showSelectedLabels: true,
                 showUnselectedLabels: true,
                 items: [
+                  // Home tab
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       Appicons.homeicon,
@@ -57,6 +68,8 @@ class MainScreen extends StatelessWidget {
                     ),
                     label: "Home",
                   ),
+
+                  // Cart tab
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       Appicons.carticon,
@@ -67,6 +80,8 @@ class MainScreen extends StatelessWidget {
                     ),
                     label: "Cart",
                   ),
+
+                  // My Order tab
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       Appicons.bagicon,
@@ -78,6 +93,7 @@ class MainScreen extends StatelessWidget {
                     label: "My Order",
                   ),
 
+                  // Account tab
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       Appicons.profileicon,

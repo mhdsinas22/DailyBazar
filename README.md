@@ -1,6 +1,3 @@
-
----
-
 ## Dependencies
 - **flutter_bloc** – State management using Bloc pattern.  
 - **equatable** – Simplifies value comparison in Bloc events/states.  
@@ -53,7 +50,28 @@
 - Used **flutter_test** package.
 
 ---
+## Project Structure
 
+lib/
+├── main.dart # App entry point
+├── screens/
+│ ├── home_screen.dart
+│ └── notifications_screen.dart
+├── models/
+│ └── notification_model.dart
+├── services/
+│ └── api_service.dart # Handles API requests
+├── utils/
+│ └── json_parser.dart # Handles JSON parsing (optional isolates)
+└── state/
+└── app_provider.dart # State management (Provider / Bloc)
+assets/
+├── images/
+├── icons/
+└── fonts/
+test/
+├── api_service_test.dart
+└── widget_test.dart
 ## Running the Project
 
 1. **Clone the repository**:

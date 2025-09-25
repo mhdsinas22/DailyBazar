@@ -8,12 +8,16 @@ import 'package:bording_week1/data/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// NotificationsScreen displays the list of notifications fetched from API
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Get screen width
+    final screenWidth = MediaQuery.of(context).size.width;
     return BlocProvider(
+      // Provide NotificationBloc and trigger fetching notifications
       create:
           (context) =>
               NotificationBloc(ApiService())..add(FetchNotifications()),
@@ -21,6 +25,7 @@ class NotificationsScreen extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
+              // Custom AppBar for Notifications Screen
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -38,7 +43,7 @@ class NotificationsScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    // Back button circle
+                    // Back button with circular background
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: Container(
@@ -54,27 +59,33 @@ class NotificationsScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
+                    // Screen title
                     MediumFont(text: "Notifications", fontsize: 20),
                   ],
                 ),
               ),
+
+              // BlocBuilder to reactively display notifications based on state
               BlocBuilder<NotificationBloc, NotificationState>(
                 builder: (context, state) {
+                  // Loading state: show progress indicator
                   if (state is NotificationLoading) {
-                    return Expanded(
-                      child: const Center(
+                    return const Expanded(
+                      child: Center(
                         child: CircularProgressIndicator(
                           color: Appcolors.appgreen,
                         ),
                       ),
                     );
-                  } else if (state is NotificationLoaded) {
+                  }
+                  // Loaded state: show list of notifications
+                  else if (state is NotificationLoaded) {
                     return Expanded(
                       child: ListView.separated(
-                        separatorBuilder:
-                            (context, index) => const Divider(thickness: 1),
                         padding: const EdgeInsets.all(8),
                         itemCount: 10,
+                        separatorBuilder:
+                            (context, index) => const Divider(thickness: 1),
                         itemBuilder: (context, index) {
                           final item = state.notifications[index];
                           return Padding(
@@ -82,10 +93,15 @@ class NotificationsScreen extends StatelessWidget {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Icon / Image
-                                Image.asset("assets/${item.image}"),
+                                // Notification icon/image
+                                Image.asset(
+                                  "assets/${item.image}",
+                                  fit: BoxFit.cover,
+                                  width: screenWidth * 0.06,
+                                ),
                                 const SizedBox(width: 12),
-                                // Title + Body + Time
+
+                                // Notification title, body, and timestamp
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -119,15 +135,22 @@ class NotificationsScreen extends StatelessWidget {
                         },
                       ),
                     );
-                  } else if (state is NotificationError) {
+                  }
+                  // Error state: display error message
+                  else if (state is NotificationError) {
                     return Expanded(
-                      child: Center(child: Text("Error: ${state.message}")),
+                      child: Center(
+                        child: Text(
+                          "Error: ${state.message}",
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      ),
                     );
                   }
-                  return Expanded(
-                    child: const Center(
-                      child: Text("Press button to fetch data"),
-                    ),
+
+                  // Default state: show placeholder message
+                  return const Expanded(
+                    child: Center(child: Text("Press button to fetch data")),
                   );
                 },
               ),
