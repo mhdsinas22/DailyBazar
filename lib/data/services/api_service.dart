@@ -23,7 +23,7 @@ class ApiService {
             final data = result['data'];
             if (data is List) {
               return data
-                  .map((json) => NotificationModel.fromjson(json))
+                  .map((json) => NotificationModel.fromJson(json))
                   .toList();
             } else {
               throw FormatException("Expected 'data' to be a List");

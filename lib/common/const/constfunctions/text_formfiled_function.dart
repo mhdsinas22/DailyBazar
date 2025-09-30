@@ -10,7 +10,6 @@ class Textformfiledfunction {
       borderRadius: BorderRadius.circular(10), // Rounded corners
     );
   }
-
   /// Returns the InputBorder for a focused TextFormField
   static InputBorder focusedBorder() {
     return OutlineInputBorder(
